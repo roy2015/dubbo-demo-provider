@@ -19,7 +19,8 @@ public class DemoServiceImpl implements DemoService {
 
     @Override
     public String throwException() {
-        throw new BeanCurrentlyInCreationException("123");
+//        throw new BeanCurrentlyInCreationException("123");
+        throw new HelloWorldException("123");
     }
 
 
