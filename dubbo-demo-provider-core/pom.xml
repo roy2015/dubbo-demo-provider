@@ -11,79 +11,28 @@
 
     <artifactId>dubbo-demo-provider-core</artifactId>
 
+    <properties>
+        <spring.version>4.0.1.RELEASE</spring.version>
+    </properties>
     <dependencies>
-        <!-- Apache Commons -->
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>3.4</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-io</artifactId>
-            <version>1.3.2</version>
-        </dependency>
-        <!-- Dubbo -->
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>dubbo</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.zookeeper</groupId>
-            <artifactId>zookeeper</artifactId>
-            <exclusions>
-                <exclusion>
-                    <artifactId>junit</artifactId>
-                    <groupId>junit</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>com.github.sgroschupf</groupId>
-            <artifactId>zkclient</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.netty</groupId>
-            <artifactId>netty</artifactId>
-        </dependency>
+        <!-- Spring dependencies -->
 
-        <!-- spring -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
+            <version>${spring.version}</version>
         </dependency>
+
         <dependency>
             <groupId>org.springframework</groupId>
-            <artifactId>spring-beans</artifactId>
+            <artifactId>spring-web</artifactId>
+            <version>${spring.version}</version>
         </dependency>
+
         <dependency>
             <groupId>org.springframework</groupId>
-            <artifactId>spring-aop</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-expression</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context-support</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-tx</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-jdbc</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-            <scope>test</scope>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${spring.version}</version>
         </dependency>
 
         <dependency>
@@ -92,180 +41,38 @@
             <version>4.12</version>
             <scope>test</scope>
         </dependency>
-
-
-        <!-- database -->
         <dependency>
-            <groupId>org.mybatis</groupId>
-            <artifactId>mybatis</artifactId>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring.version}</version>
         </dependency>
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.tomcat</groupId>
-            <artifactId>tomcat-jdbc</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.mybatis</groupId>
-            <artifactId>mybatis-spring</artifactId>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+            <version>${spring.version}</version>
         </dependency>
 
-        <!-- MPH组件库 -->
-        <dependency>
-            <groupId>com.rograndec.ops</groupId>
-            <artifactId>ops-logstash</artifactId>
-        </dependency>
-
-        <!-- Json -->
+        <!-- dubbo dependency -->
         <dependency>
             <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>1.2.8</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>cglib</groupId>
-            <artifactId>cglib-nodep</artifactId>
+            <artifactId>dubbo</artifactId>
+            <version>2.5.7</version>
         </dependency>
         <dependency>
-            <groupId>org.aspectj</groupId>
-            <artifactId>aspectjrt</artifactId>
+            <groupId>org.javassist</groupId>
+            <artifactId>javassist</artifactId>
+            <version>3.18.1-GA</version>
         </dependency>
         <dependency>
-            <groupId>org.aspectj</groupId>
-            <artifactId>aspectjweaver</artifactId>
+            <groupId>org.jboss.netty</groupId>
+            <artifactId>netty</artifactId>
+            <version>3.2.9.Final</version>
         </dependency>
-
         <dependency>
-            <groupId>com.mph.coreapi</groupId>
-            <artifactId>dubbo-bin</artifactId>
-            <version>1.0.1</version>
-            <type>zip</type>
+            <groupId>com.101tec</groupId>
+            <artifactId>zkclient</artifactId>
+            <version>0.4</version>
         </dependency>
-
-        <!--<dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>1.2.17</version>
-        </dependency>-->
 
     </dependencies>
-
-    <build>
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-                <includes>
-                    <include>**/*.*</include>
-                </includes>
-            </resource>
-        </resources>
-        <pluginManagement>
-            <plugins>
-                <!-- 解决Maven插件在Eclipse内执行了一系列的生命周期引起冲突 -->
-                <plugin>
-                    <groupId>org.eclipse.m2e</groupId>
-                    <artifactId>lifecycle-mapping</artifactId>
-                    <version>1.0.0</version>
-                    <configuration>
-                        <lifecycleMappingMetadata>
-                            <pluginExecutions>
-                                <pluginExecution>
-                                    <pluginExecutionFilter>
-                                        <groupId>org.apache.maven.plugins</groupId>
-                                        <artifactId>maven-dependency-plugin</artifactId>
-                                        <versionRange>[1.0,)</versionRange>
-                                        <goals>
-                                            <goal>copy-dependencies</goal>
-                                            <goal>unpack</goal>
-                                        </goals>
-                                    </pluginExecutionFilter>
-                                    <action>
-                                        <ignore />
-                                    </action>
-                                </pluginExecution>
-                            </pluginExecutions>
-                        </lifecycleMappingMetadata>
-                    </configuration>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>unpack</id>
-                        <phase>prepare-package</phase>
-                        <goals>
-                            <goal>unpack</goal>
-                        </goals>
-                        <configuration>
-                            <artifactItems>
-                                <artifactItem>
-                                    <groupId>com.mph.coreapi</groupId>
-                                    <artifactId>dubbo-bin</artifactId>
-                                    <version>1.0.1</version>
-                                    <type>zip</type>
-                                    <outputDirectory>${project.build.directory}/bin</outputDirectory>
-                                </artifactItem>
-                            </artifactItems>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>${version-maven-jar-plugin}</version>
-                <configuration>
-                    <archive>
-                        <manifest>
-                            <addClasspath>false</addClasspath>
-                            <mainClass>com.alibaba.dubbo.container.Main</mainClass>
-                        </manifest>
-                    </archive>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <version>${version-maven-assembly-plugin}</version>
-                <executions>
-                    <execution>
-                        <id>make-binary-package</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>single</goal>
-                        </goals>
-                        <configuration>
-                            <finalName>mph-dubbo-deploy</finalName>
-                            <appendAssemblyId>false</appendAssemblyId>
-                            <descriptors>
-                                <descriptor>src/main/resources/assemble-descriptor.xml</descriptor>
-                            </descriptors>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-deploy-plugin</artifactId>
-                <version>2.7</version>
-                <configuration>
-                    <skip>true</skip>
-                </configuration>
-            </plugin>
-
-        </plugins>
-    </build>
 </project>

@@ -20,13 +20,13 @@ public class DemoServiceImpl implements DemoService {
         this.name = name;
     }
 
-    @Override
+//    @Override
     public Integer add(Integer a, Integer b) {
         System.out.println(String.format("入参为 a = %s, b= %s" , a,b ));
         return a + b;
     }
 
-    @Override
+//    @Override
     public String throwException() {
 //        throw new BeanCurrentlyInCreationException("123");
         throw new HelloWorldException("123");
